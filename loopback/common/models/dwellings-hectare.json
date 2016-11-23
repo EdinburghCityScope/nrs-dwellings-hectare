@@ -1,0 +1,47 @@
+{
+  "name": "DwellingsHectare",
+  "description": "Number of dwellings per hectare in Edinburgh.",
+  "plural": "DwellingsHectare",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mongodb": {
+    "collection": "Stats"
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "id": true
+    },
+    "year": {
+      "type": "number",
+      "required": true
+    },
+    "zone": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
+    "ratio": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "dataZone": {
+      "type": "belongsTo",
+      "model": "GeoJSONFeature",
+      "foreignKey": "zone",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
